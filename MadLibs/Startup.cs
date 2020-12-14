@@ -25,19 +25,20 @@ namespace MadLibs
 
     public void Configure(IApplicationBuilder app)
     {
-      app.UseMvc(routes =>
-      {
+        app.UseDeveloperExceptionPage();
+
+        app.UseMvc(routes =>
+        {
         routes.MapRoute(
           name: "default",
           template: "{controller=Home}/{action=Index}/{id?}");
-      });
+        });
 
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("default");
-      });
+        app.Run(async (context) =>
+        {
+            await context.Response.WriteAsync("default");
+        });
 
-      app.UseDeveloperExceptionPage();
     }
   }
 }
